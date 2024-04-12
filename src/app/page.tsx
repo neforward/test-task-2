@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { sanitize } from "dompurify";
-
+import DOMPurify from "dompurify";
 
 interface Review {
   id: number;
@@ -97,8 +96,8 @@ export default function Home() {
             <div className="main-reviews">
               {reviews.map((review, i) => (
                 <div className="review-box" key={i}>
-                  <h4>{sanitize(review.id.toString())}</h4>
-                  <p>{sanitize(review.text)}</p>
+                  <h4>{DOMPurify.sanitize(review.id.toString())}</h4>
+                  <p>{DOMPurify.sanitize(review.text)}</p>
                 </div>
               ))}
             </div>
@@ -107,14 +106,13 @@ export default function Home() {
                 <h2>Добавленные товары</h2>
                 {cartItems.map((item, index) => (
                   <div className="row" key={index}>
-                    <h5>{sanitize(item.product.title)}</h5>
+                    <h5>{DOMPurify.sanitize(item.product.title)}</h5>
                     <span>x{item.quantity}</span>
                     <span>{item.product.price * item.quantity}₽</span>
                   </div>
                 ))}
                 <div className="main-order">
-               
-                  <input type="text" placeholder="Введите номер телефона"/>
+                  <input type="text" placeholder="Введите номер телефона" />
                   <button>заказать</button>
                 </div>
               </div>
@@ -133,8 +131,8 @@ export default function Home() {
                           <img src={product.image_url} alt="" />
                         </div>
                         <div className="des-n-title">
-                          <h2>{sanitize(product.title)}</h2>
-                          <p>{sanitize(product.description)}</p>
+                          <h2>{DOMPurify.sanitize(product.title)}</h2>
+                          <p>{DOMPurify.sanitize(product.description)}</p>
                         </div>
                         <div className="price">
                           <h4>цена: {product.price}₽</h4>
