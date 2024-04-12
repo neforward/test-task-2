@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { sanitize } from "dompurify";
-import InputMask from "react-input-mask";
+
 
 interface Review {
   id: number;
@@ -113,10 +113,8 @@ export default function Home() {
                   </div>
                 ))}
                 <div className="main-order">
-                  <InputMask
-                    mask="+9 (999) 999-99-99"
-                    placeholder="Введите номер телефона"
-                  />
+               
+                  <input type="text" placeholder="Введите номер телефона"/>
                   <button>заказать</button>
                 </div>
               </div>
